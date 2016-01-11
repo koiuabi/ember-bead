@@ -4,7 +4,7 @@
 
 **Funkcionális elvárások:**
 
-A webes alkalmazás amit készítünk egy egyszerű családok számára használható TODO (tennivalók kigyűjtése) program. A programnak kell lennie egy lista oldalnak, ahol az összes tennivaló látható. Erről az oldalról lehetőségünk van az egyes tennivalókat megtekinteni, szerkeszteni és törölni, illetve új tennivalókat felvenni. Az új tennivalókat egy felugró ablakban tudjuk felvenni, egy tennivalót szerkeszteni pedig egy külön oldalon. A lista oldalon minden tennivalóhoz tartozik továbbá egy "megtekint" gomb, ami egy kölön oldalon kiírja az adott tennivaló adatait.
+A webes alkalmazás amit készítünk egy egyszerű recept tár program. A programnak kell lennie egy lista oldalnak, ahol az összes recept látható. Erről az oldalról lehetőségünk van az egyes recepteket megtekinteni, szerkeszteni és törölni, illetve új recepteket felvenni. Az új recepteket egy felugró ablakban tudjuk felvenni, egy receptet szerkeszteni pedig egy külön oldalon. A lista oldalon minden recepthez tartozik továbbá egy "megtekint" funkció, melynek segítségével megtekintehő a recept teljes leírása.
 
 **Nem funkcionális követelmények:**
 
@@ -12,22 +12,22 @@ Az alkalmazást vastagkliens alkalmazásként valósítjuk meg ember js segíts�
 
 **Szakterületi fogalomjegyzék:**
 
-- todo: Az adatbázisban tárolt tennivalók elnevezése.
+- recipe: Az adatbázisban tárolt receptek elnevezése.
 - ember js: vastagkliens alkalmazás technológia, a program alapja
-- REST API: Representational State Transfer) egy szoftverarchitektúra típus elosztott hipermédia rendszerek számára
+- REST API: (Representational State Transfer) egy szoftverarchitektúra típus, elosztott hipermédia rendszerek számára
 
 **Használati eset modell:**
 
 Szerep körök:
 
-A program todo típusú adatokat tárol egy távoli szerveren amik a program megnyitása után elérhetőek a felhaználók számára. Nincsen egyedi user-ek.
+A program recipe típusú adatokat tárol egy távoli szerveren amik a program megnyitása után elérhetőek a felhasználók számára. Az oldalra a regisztráció, így a belépés sem lehetséges, nincsenek egyedi user felületek.
 
 Használati eset diagram:
-![eset diagram](images/esetdiagramm.jpg)
+![eset diagram](images/esetdiagram.jpg)
 
 Egy folyamat ismertetése:
 
-A felhasználó a program használatakor először egy üdvözlő oldalra kerül, innen elérjük az összes TODO-t egy oldalon listázva. Minden TODO-hoz tartozik egy szerkesztés, egy törlés gomb és egy megtekintés gomb. A szerkesztés gombra kattintva értelem szerűen az adott TODO leírása szerkeszthető és az, hogy kinek a feladata az adott TODO. Ha elmentettük a módosításokat akkor visszakerülünk a lista oldalra, ahol már a módosított adatokkal jelenik meg a TODO. Értelem szerűen a törlés gomb törli az adott TODO-t. A megtekintés gomb az adott Todo részleteit mutatja meg (id, Kié a tennivaló, Tennivaló leírása. Megtalálható továbbá még a lista oldalon egy "Új TODO felvétele" gomb, ami egy felugró ablakot nyit ki, ahol egy teljesen új TODO vehető fel. Ha elmentettük, akkor visszakerülünk a lista oldalra. 
+A felhasználó a program használatakor először egy üdvözlő oldalra kerül, innen elérjük az összes receptet egy oldalon listázva. Minden recepthez tartozik egy szerkesztés, egy törlés gomb és egy megtekintés gomb. A szerkesztés gombra kattintva az adott receptet tudjuk módosítani. Ha elmentettük a módosításokat akkor visszakerülünk a lista oldalra, ahol már a módosított adatokkal jelenik meg a recept. A törlés gomb megnyomásával törölhetünk egy receptet a listából. A megtekintés gomb segítségével az adott recept részleteit láthatjuk. A lista oldalon lehetőségünk van bővíteni az adatbázist új recept felvételével, ezen gomb megnyomásával egy új ablak ugrik fel. Ha elmentettük a frissen felvett receptet, akkor visszakerülünk a lista oldalra. 
 
 ##2. Tervezés
 
@@ -36,16 +36,16 @@ A felhasználó a program használatakor először egy üdvözlő oldalra kerül
 Az alkalmazás egy Javascript alapú HTML, ember js, bower, bootstrap technológiákat használó program. A kliensoldali alkalmazás alapját az app mappában lévő router.js (ebben találhatóak az oldal végpontjai) és a végpontokhoz tarozó, a pods mappában tárolt template.hbs, route.js és controller.js file-ok alkotják.
 
 Oldal térkép:
-![eset diagram](images/oldaltérkép.jpg)
+![oldalterkep](images/oldalterkep.jpg)
 
 Végpontok:
 
 - about                     Az oldal készítőjének adatai
-- todos/list                A listázó oldal
-- todos/new                 Az új TODO felvétele oldal
-- todos/edit/:todo_id       A TODO szerkesztése oldal
-- todos/delete/:todo_id     A TODO törlése oldal
-- todos/view/:todo_id       A TOODO megtekintése  
+- recipes/list                A listázó oldal
+- recipes/new                 Az új recept felvétele oldal
+- recipes/edit/:recipe_id       A recept szerkesztése oldal
+- recipes/delete/:recipe_id     A recept törlése oldal
+- recipes/view/:recipe_id       A recept megtekintése  
 
 **Felhasználóifelület-modell**
 
@@ -53,31 +53,27 @@ Oldal vázlatok:
 
 Első oldal:
 
-![első oldal](images/1.jpg)
+![első oldal](images/elso.jpg)
 
 Lista oldal:
 
-![login oldal](images/2.jpg)
+![list oldal](images/masodik.jpg)
 
 Szerkesztő oldal:
 
-![regisztrációs oldal](images/3.jpg)
+![szerkesztői oldal](images/szerkeszt.jpg)
 
-Új Todo felvétele oldal:
+Új recept felvétele oldal:
 
-![listázó oldal](images/4.jpg)
+![new oldal](images/new.jpg)
 
-About oldal:
+Recept megtekintése oldal:
 
-![szerkesztési oldal](images/5.jpg)
-
-TODO megtekintése oldal:
-
-![új todo oldal](images/6.jpg)
+![új todo oldal](images/megjelenites.jpg)
 
 **Adatmodell**
 
-![Adatbázis modell diagram-ja](images/adatbazis_modell.png)
+![Adatbázis modell diagram-ja](images/adatmodell.jpg)
 
 ##3. Implementálás
 
@@ -87,7 +83,8 @@ A fejlesztés a cloud 9 felületén zajlott.
 
 Mappa szerkezet:
 
-![Adatbázis modell diagram-ja](images/mappak.jpg)
+![Adatbázis modell diagram-ja](images/mappa1.jpg)
+![Adatbázis modell diagram-ja](images/mappa2.jpg)
 
 - .tmp: itt tároljuk file-ban az adatokat
 - config: a waterline configurációját tároljuk itt
@@ -95,7 +92,7 @@ Mappa szerkezet:
 - models: az adatbázik modelljét leíró file-ok és a teszt file-ok
 - node_modules: a különböző node modulok
 - public: bootswatch, bootstrap, jquery
-- views: az oldalak megjeneésért felelős hbs file-ok
+- views: az oldalak megjelenésért felelős hbs file-ok
 - images: a dokumentációban használt képek
 
 ##5. Felhasználói dokumentáció
@@ -104,9 +101,3 @@ Futtatási követelmények:
 - Egy javascript futtatására alkalmas böngésző
 - Operációs rendszeres tetszőleges
 - 2db Cloud9-os workspace
-- 
-
-
-A program használata a folyamat ismertetés alapján magától értetődik.
-
-
