@@ -69,7 +69,7 @@ Szerkesztő oldal:
 
 Recept megtekintése oldal:
 
-![recept megtekintése](images/megjelenites.jpg)
+![recept megtekintés](images/megjelenites.jpg)
 
 **Adatmodell**
 
